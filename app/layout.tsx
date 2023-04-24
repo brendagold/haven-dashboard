@@ -1,7 +1,10 @@
+"use client";
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { darkTheme } from './theme/themes';
+import { Sidebar, Menu, MenuItem, SubMenu, ProSidebarProvider } from 'react-pro-sidebar';
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ThemeProvider theme={darkTheme}>
+      <ProSidebarProvider>
+        <CssBaseline />
+      <body id="__next">{children}</body>
+      </ProSidebarProvider>
+      </ThemeProvider>
     </html>
   )
 }
