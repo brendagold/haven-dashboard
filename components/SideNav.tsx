@@ -31,12 +31,18 @@ const SideNav = () => {
         menuItemStyles={{
           button: ({ level, active }) => {
             return {
-              backgroundColor: active ? "#fcfcfc" : undefined,
+              backgroundColor: active ? "#1e36e8" : undefined,
+              color: active ? "#fff" : "#3d3d3d",
+              borderRadius: "10px",
+              mx: 1,
+              '&:hover': {
+                background: active ? '#1e36e8': '',
+              }
             };
           },
         }}
       >
-        <MenuItem icon={<Dashboard />}>
+        <MenuItem active icon={<Dashboard />}>
           <Typography variant="body2">Dashboard</Typography>{" "}
         </MenuItem>
         <MenuItem icon={<VillaOutlined />}>
