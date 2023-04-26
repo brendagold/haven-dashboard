@@ -6,10 +6,10 @@ export default function Home() {
   return (
     
     <Box>
-      <AppHeader />
-      <SideNav />
-      <Box></Box>
+      <div>Content</div>
+      
     </Box>
     
   )
 }
+

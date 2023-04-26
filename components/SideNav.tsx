@@ -16,12 +16,14 @@ import {
   StarOutlineRounded,
   VillaOutlined,
 } from "@mui/icons-material";
+import Link from "next/link";
 
 const SideNav = () => {
+  const theme = useTheme();
   const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
   return (
     <Sidebar
-      style={{ height: "100%", top: "auto" }}
+      style={{ height: "100%", top: "auto", border: "none" }}
       breakPoint="md"
       backgroundColor="#fff"
     >
@@ -31,45 +33,45 @@ const SideNav = () => {
         menuItemStyles={{
           button: ({ level, active }) => {
             return {
-              backgroundColor: active ? "#1e36e8" : undefined,
-              color: active ? "#fff" : "#3d3d3d",
+              backgroundColor: active ? theme.palette.primary.main : undefined,
+              color: active ? "#fff" : theme.palette.secondary.main,
               borderRadius: "10px",
               mx: 1,
               '&:hover': {
-                background: active ? '#1e36e8': '',
+                background: active ? theme.palette.primary.light : '',
               }
             };
           },
         }}
       >
-        <MenuItem active icon={<Dashboard />}>
+        <MenuItem active component={<Link href="/" />} icon={<Dashboard />}>
           <Typography variant="body2">Dashboard</Typography>{" "}
         </MenuItem>
-        <MenuItem icon={<VillaOutlined />}>
+        <MenuItem component={<Link href="/property" />} icon={<VillaOutlined />}>
           <Typography variant="body2">Property </Typography>
         </MenuItem>
-        <MenuItem icon={<PeopleAltOutlined />}>
+        <MenuItem component={<Link href="/agent" />} icon={<PeopleAltOutlined />}>
           <Typography variant="body2">Agent </Typography>
         </MenuItem>
-        <MenuItem icon={<StarOutlineRounded />}>
+        <MenuItem component={<Link href="/review" />} icon={<StarOutlineRounded />}>
           <Typography variant="body2">Reviews </Typography>
         </MenuItem>
-        <MenuItem icon={<ChatBubbleOutline />}>
+        <MenuItem component={<Link href="/message" />} icon={<ChatBubbleOutline />}>
           <Typography variant="body2">Message </Typography>
         </MenuItem>
-        <MenuItem icon={<AccountCircleOutlined />}>
+        <MenuItem component={<Link href="/my-profile" />} icon={<AccountCircleOutlined />}>
           <Typography variant="body2">My Profile </Typography>
         </MenuItem>
       </Menu>
       <Button
             sx={{
-              background: '#475BE8',
+              background: theme.palette.primary.main,
               color: 'primary.contrastText',
               textAlign: 'center',
               borderRadius: 0,
               borderTop: '1px solid #ffffff1a',
               '&:hover': {
-                background: '#1e36e8',
+                background: theme.palette.primary.light,
               },
             }}
             fullWidth
