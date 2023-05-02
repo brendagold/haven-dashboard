@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Avatar, Box, Typography, Button, useTheme } from "@mui/material";
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
@@ -17,9 +18,11 @@ import {
   VillaOutlined,
 } from "@mui/icons-material";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
 const SideNav = () => {
   const theme = useTheme();
+  const pathname = usePathname();
   const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
   return (
     <Sidebar
@@ -28,7 +31,7 @@ const SideNav = () => {
       backgroundColor="#fff"
     >
       
-
+<Box>
       <Menu
         menuItemStyles={{
           button: ({ level, active }) => {
@@ -44,22 +47,22 @@ const SideNav = () => {
           },
         }}
       >
-        <MenuItem active component={<Link href="/" />} icon={<Dashboard />}>
-          <Typography variant="body2">Dashboard</Typography>{" "}
+        <MenuItem active={pathname === "/"} component={<Link href="/" />} icon={<Dashboard />}>
+          <Typography variant="body2">Dashboard</Typography>
         </MenuItem>
-        <MenuItem component={<Link href="/property" />} icon={<VillaOutlined />}>
+        <MenuItem active={pathname === "/property"} component={<Link href="/property" />} icon={<VillaOutlined />}>
           <Typography variant="body2">Property </Typography>
         </MenuItem>
-        <MenuItem component={<Link href="/agent" />} icon={<PeopleAltOutlined />}>
+        <MenuItem active={pathname === "/agent"} component={<Link href="/agent" />} icon={<PeopleAltOutlined />}>
           <Typography variant="body2">Agent </Typography>
         </MenuItem>
-        <MenuItem component={<Link href="/review" />} icon={<StarOutlineRounded />}>
+        <MenuItem active={pathname === "/review"} component={<Link href="/review" />} icon={<StarOutlineRounded />}>
           <Typography variant="body2">Reviews </Typography>
         </MenuItem>
-        <MenuItem component={<Link href="/message" />} icon={<ChatBubbleOutline />}>
+        <MenuItem active={pathname === "/message"} component={<Link href="/message" />} icon={<ChatBubbleOutline />}>
           <Typography variant="body2">Message </Typography>
         </MenuItem>
-        <MenuItem component={<Link href="/my-profile" />} icon={<AccountCircleOutlined />}>
+        <MenuItem active={pathname === "/my-profile"} component={<Link href="/my-profile" />} icon={<AccountCircleOutlined />}>
           <Typography variant="body2">My Profile </Typography>
         </MenuItem>
       </Menu>
@@ -80,6 +83,7 @@ const SideNav = () => {
           >
             {collapsed ? <ChevronRight /> : <ChevronLeft />}
           </Button>
+          </Box>
     </Sidebar>
   );
 };
