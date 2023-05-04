@@ -1,9 +1,9 @@
 import React from "react";
-
-import ReactApexChart from "react-apexcharts";
 import { Box, Typography, Button, Grid, Stack } from "@mui/material";
 import { ArrowCircleUpRounded } from "@mui/icons-material";
 import { TotalRevenueOptions, TotalRevenueSeries } from "./chart.config";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 const TotalRevenue = () => {
   return (
     <Box
@@ -38,7 +38,7 @@ const TotalRevenue = () => {
           </Stack>
         </Stack>
       </Stack>
-      <ReactApexChart
+      <Chart
           series={TotalRevenueSeries}
           type="bar"
           height={310}
