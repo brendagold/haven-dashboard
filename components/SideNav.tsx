@@ -50,16 +50,16 @@ const SideNav = () => {
         <MenuItem active={pathname === "/"} component={<Link href="/" />} icon={<Dashboard />}>
           <Typography variant="body2">Dashboard</Typography>
         </MenuItem>
-        <MenuItem active={pathname === "/property"} component={<Link href="/property" />} icon={<VillaOutlined />}>
+        <MenuItem active={pathname === "/properties"} component={<Link href="/properties" />} icon={<VillaOutlined />}>
           <Typography variant="body2">Property </Typography>
         </MenuItem>
-        <MenuItem active={pathname === "/agent"} component={<Link href="/agent" />} icon={<PeopleAltOutlined />}>
+        <MenuItem active={pathname === "/agents"} component={<Link href="/agents" />} icon={<PeopleAltOutlined />}>
           <Typography variant="body2">Agent </Typography>
         </MenuItem>
-        <MenuItem active={pathname === "/review"} component={<Link href="/review" />} icon={<StarOutlineRounded />}>
+        <MenuItem active={pathname === "/reviews"} component={<Link href="/reviews" />} icon={<StarOutlineRounded />}>
           <Typography variant="body2">Reviews </Typography>
         </MenuItem>
-        <MenuItem active={pathname === "/message"} component={<Link href="/message" />} icon={<ChatBubbleOutline />}>
+        <MenuItem active={pathname === "/messages"} component={<Link href="/messages" />} icon={<ChatBubbleOutline />}>
           <Typography variant="body2">Message </Typography>
         </MenuItem>
         <MenuItem active={pathname === "/my-profile"} component={<Link href="/my-profile" />} icon={<AccountCircleOutlined />}>
