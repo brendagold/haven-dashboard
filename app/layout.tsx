@@ -1,57 +1,46 @@
 "use client";
-import './globals.css'
-import {Box, ThemeProvider, CssBaseline } from "@mui/material";
-import { darkTheme } from './theme/themes';
-import { Sidebar, Menu, MenuItem, SubMenu, ProSidebarProvider } from 'react-pro-sidebar';
-import Head from 'next/head'
-import {AppHeader, SideNav} from "@/components";
+import "./globals.css";
+import { Box, ThemeProvider, CssBaseline } from "@mui/material";
+import { darkTheme } from "./theme/themes";
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  ProSidebarProvider,
+} from "react-pro-sidebar";
+import { Metadata } from "next";
+import { AppHeader, SideNav } from "@/components";
+import ProvidersWrapper from "./ProvidersWrapper";
+import Login from "./login/page";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { LayoutContent } from "./layoutContent";
+// export const metadata: Metadata = {
+//   title: 'Haven Real Estate',
+//   description: 'Welcome to Haven, developed by Mary ',
+// };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  //const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
-      <Head>
-        <title>Haven Real Estate</title>
-        <meta name="description" content="Developed by Chukwuma Mary" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
       <ThemeProvider theme={darkTheme}>
-      <ProSidebarProvider>
-        <CssBaseline />
-      <body id="__next">
-      <AppHeader />
-      <Box sx={styles.container}>
-        <SideNav />
-      <Box component={'main'} sx={styles.mainSection}>
-        {children}
-      </Box>
-      </Box>
-        
-        </body>
-      </ProSidebarProvider>
+        <ProSidebarProvider>
+          <CssBaseline />
+          <body id="__next">
+            <ProvidersWrapper>
+              <LayoutContent>{children}</LayoutContent>
+
+              {/* <Login /> */}
+            </ProvidersWrapper>
+          </body>
+        </ProSidebarProvider>
       </ThemeProvider>
     </html>
-  )
-}
-
-/**
- * @type {import('@mui/material').SxProps}
- */
-const styles = {
-  container: {
-    display: 'flex',
-    bgcolor: 'secondary.light',
-    height: 'calc(100% - 64px)',
-    minheight: '100vh'
-  },
-  mainSection: {
-    p: 4,
-    width: '100%',
-    height: '100%',
-    overflow: 'auto',
-  },
-  
+  );
 }

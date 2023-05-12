@@ -18,8 +18,11 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import Image from "next/image";
 import { useProSidebar } from "react-pro-sidebar";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
+import CustomButton from "./common/CustomButton";
 
 const AppHeader = () => {
+  const {data: session} = useSession()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -115,18 +118,24 @@ const AppHeader = () => {
                 <NotificationsOutlinedIcon fontSize="large" />
               </Badge>
             </IconButton>
-            <Avatar src="/static/images/avatar/2.jpg" alt="brenda" />
+            <Avatar src={session?.user?.image} alt={session?.user?.name} />
 
             <Stack direction="column" sx={{ display: { xs: 'none', md: 'flex' }}}>
               <Typography
                 sx={{ fontSize: 14, fontWeight: 600, color: "#11142D" }}
               >
-                Brenda
+                {session?.user?.name}
               </Typography>
               <Typography sx={{ fontSize: 12, color: "#808191" }}>
-                brenda@gmail.com
+                {session?.user?.email}
               </Typography>
             </Stack>
+            <CustomButton
+          title='Sign Out'
+          backgroundColor="#475BE8"
+          color="#FCFCFC"
+          handleClick={() => signOut()}
+        />
           </Stack>
         </Stack>
       </Toolbar>

@@ -76,6 +76,11 @@ export interface Credential {
   password: string;
 }
 
+export interface Client {
+  clientId: string;
+  clientSecret: string;
+}
+
 export interface Google {
   accounts: {
     id: {
