@@ -1,7 +1,6 @@
 import { Box, ThemeProvider, CssBaseline } from "@mui/material";
 import { AppHeader, SideNav } from "@/components";
-import Login from "./login/page";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession} from "next-auth/react";
 
 export const LayoutContent = ({ children }: { children: React.ReactNode }) => {
   const { data: session, status } = useSession({ required: true });

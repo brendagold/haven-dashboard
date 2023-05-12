@@ -23,6 +23,7 @@ import CustomButton from "./common/CustomButton";
 
 const AppHeader = () => {
   const {data: session} = useSession()
+  const user = session?.user
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -118,16 +119,16 @@ const AppHeader = () => {
                 <NotificationsOutlinedIcon fontSize="large" />
               </Badge>
             </IconButton>
-            <Avatar src={session?.user?.image} alt={session?.user?.name} />
+            <Avatar src={user?.image} alt={user?.name} />
 
             <Stack direction="column" sx={{ display: { xs: 'none', md: 'flex' }}}>
               <Typography
                 sx={{ fontSize: 14, fontWeight: 600, color: "#11142D" }}
               >
-                {session?.user?.name}
+                {user?.name}
               </Typography>
               <Typography sx={{ fontSize: 12, color: "#808191" }}>
-                {session?.user?.email}
+                {user?.email}
               </Typography>
             </Stack>
             <CustomButton
