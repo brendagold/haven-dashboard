@@ -133,7 +133,7 @@ const AppHeader = () => {
             </Stack>
             <CustomButton
           title='Sign Out'
-          backgroundColor="#475BE8"
+          backgroundColor="#53208D"
           color="#FCFCFC"
           handleClick={() => signOut()}
         />
