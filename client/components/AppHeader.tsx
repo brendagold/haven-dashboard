@@ -12,7 +12,7 @@ import {
   MenuItem,
   Box
 } from "@mui/material";
-import { yariga, logo } from "../assets/index";
+import { haven, logo } from "../assets/index";
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import Image from "next/image";
@@ -70,7 +70,7 @@ console.log(user)
           {collapsed ? (
             <Image src={logo} alt="Haven" width={28} />
           ) : (
-            <Image src={yariga} alt="Haven" width={140} />
+            <Image src={haven} alt="Haven" width={140} />
           )}
         </IconButton>
         </Box>
