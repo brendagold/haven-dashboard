@@ -6,6 +6,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import mongoose from 'mongoose';
 import Property from '../mongodb/models/property.js';
 import User from '../mongodb/models/user.js';
+//import { dataUri } from '../middlewares/multer.js';
 
 dotenv.config();
 
@@ -64,20 +65,29 @@ const getPropertyDetail = async (req, res) => {
 const createProperty = async (req, res) => {
   try {
     const {
-      title, description, propertyType, location, price, photo, email,
+      title, description, propertyType, location, price, email,
     } = req.body;
-
+    const { photo } = req.file;
+console.log(req.file)
     // Start a new session
     const session = await mongoose.startSession();
     session.startTransaction();
 
     // Retrieve user by email
     const user = await User.findOne({ email }).session(session);
+    console.log(email, title)
     if (!user) {
       throw new Error('User not found');
     }
 
-    const photoUrl = await cloudinary.uploader.upload(photo);
+    
+      // const file = dataUri(req).content;
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+    let image = "data:" + req.file.mimetype + ";base64," + b64;
+      const photoUrl = await cloudinary.uploader.upload(image);
+      console.log(photoUrl)
+    
+    
 
     // Create a new property
     const newProperty = await Property.create(
@@ -102,7 +112,9 @@ const createProperty = async (req, res) => {
     // Send response
     res.status(200).json({ message: 'Property created successfully' });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to create property, please try again later' });
+    res.status(500).json({ message: err.message });
+    //console.log(err)
+    // 'Failed to create property, please try again later'
   }
 };
 

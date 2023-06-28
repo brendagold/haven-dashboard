@@ -1,6 +1,9 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
+import bodyParser from 'body-parser';
+import multer from 'multer';
+
 
 import connectDB from './mongodb/connect.js';
 import userRouter from './routes/user.routes.js';
@@ -8,9 +11,20 @@ import propertyRouter from './routes/property.routes.js';
 
 dotenv.config();
 
+//const upload = multer();
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
+// for parsing application/json
+//app.use(bodyParser.json()); 
+
+// for parsing application/xwww-
+//app.use(bodyParser.urlencoded({ extended: true })); 
+//form-urlencoded
+
+// for parsing multipart/form-data
+// app.use(upload.array()); 
+// app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.status(200).json({
