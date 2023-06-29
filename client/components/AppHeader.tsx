@@ -45,7 +45,6 @@ const AppHeader = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-console.log(user)
   //     const { data: user } = useGetIdentity();
   //   const showUserInfo = user && (user.name || user.avatar);
   const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();

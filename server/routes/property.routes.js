@@ -15,7 +15,7 @@ router.route("/").get(getAllProperties);
 
 router.route("/:id").get(getPropertyDetail);
 
-router.post("/", multerUploads, createProperty);
+router.post("/", createProperty);
 
 router.route("/:id").patch(updateProperty);
 

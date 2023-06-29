@@ -17,6 +17,7 @@ const CreateProperty = () => {
   const {
     register,
     formState: { errors },
+    handleSubmit
   } = useForm();
  
  
@@ -31,6 +32,7 @@ const CreateProperty = () => {
     reader(file).then((result: string) =>
       setPropertyImage({ name: file?.name, url: result })
     );
+
   };
 
   // const onFinishHandler = async (data: FieldValues) => {
@@ -41,23 +43,34 @@ const CreateProperty = () => {
   //   navigate("/properties");
   // };
 
-  const handleSubmit = async (data: FieldValues, e: any) => {
+  const onSubmit = async (data: FieldValues, e: any) => {
+    // console.log(data)
+    // console.log(data.photo[0])
+    // const formData = new FormData();
+    //     formData.append("files", data.photo[0]);
+  //       data = { ...data, photo: data.photo[0].name };
+  // formData.append("property", JSON.stringify(data));
     e.preventDefault()
     if (!propertyImage.name) return alert("Please upload a property image");
     await axios.post(
       "http://localhost:8080/api/v1/properties",
-      { ...data, photo: propertyImage.url, email: user?.email })
+      { ...data,photo: propertyImage.url, email: user?.email })
       router.push('/properties')
+     
   } 
   return (
     <Form
       type="Create"
       register={register}
       formLoading={formLoading}
-      handleSubmit={handleSubmit}
+      handleSubmit={handleSubmit(onSubmit)}
       handleImageChange={handleImageChange}
-      propertyImage={propertyImage}
-    />
+      propertyImage={propertyImage} onFinish={function (values: FieldValues): Promise<any> {
+        throw new Error("Function not implemented.");
+      } } onFinishHandler={function (data: FieldValues): Promise<void> {
+        throw new Error("Function not implemented.");
+      } }    />
+    //handleImageChange={handleImageChange}
   );
 };
 

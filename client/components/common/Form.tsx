@@ -84,7 +84,7 @@ const Form = ({
                 padding: 10,
                 color: "#919191",
               }}
-              {...register("title", { required: true })}
+              {...register("description", { required: true })}
             />
           </FormControl>
           <Stack direction='row' gap={4}>
@@ -133,12 +133,14 @@ const Form = ({
           <Stack direction="row" gap={2}>
             <Typography color="#11142D" fontSize={16} fontWeight={500} my="10px">Property Photo</Typography>
 
-            <Button component="label" sx={{ width: 'fit-content', color: '#2ED480', textTransform: 'capitalize', fontSize: 16 }}>
+            <Button component="label" sx={{ width: 'fit-content', color: '#2ED480', textTransform: 'capitalize', fontSize: 16 }} {...register('photo', { required: true })}>
               Upload *
               <input
                 hidden
                 accept="image/*"
                 type="file"
+                required
+                name='photo'
                 onChange={(e) => {
                   // @ts-ignore
                   handleImageChange(e.target.files[0]);
