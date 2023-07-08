@@ -1,7 +1,5 @@
 "use client";
 import "./globals.css";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
 import { Box, ThemeProvider, CssBaseline } from "@mui/material";
 import { darkTheme } from "./theme/themes";
 import {
@@ -36,7 +34,6 @@ export default function RootLayout({
           <body id="__next">
             <ProvidersWrapper>
               <LayoutContent>{children}</LayoutContent>
-              <ToastContainer />
               {/* <Login /> */}
             </ProvidersWrapper>
           </body>

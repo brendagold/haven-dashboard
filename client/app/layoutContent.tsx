@@ -1,4 +1,6 @@
 import { Box, ThemeProvider, CssBaseline } from "@mui/material";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { AppHeader, SideNav } from "@/components";
 import { useSession} from "next-auth/react";
 
@@ -14,6 +16,7 @@ export const LayoutContent = ({ children }: { children: React.ReactNode }) => {
           <Box component={"main"} sx={styles.mainSection}>
             {children}
           </Box>
+          <ToastContainer />
         </Box>
       </>
     );
