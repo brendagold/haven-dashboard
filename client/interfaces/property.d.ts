@@ -1,4 +1,4 @@
-import { BaseKey } from '@pankod/refine-core';
+
 
 export interface FormFieldProp {
   title: string,
@@ -14,7 +14,7 @@ export interface FormValues {
 }
 
 export interface PropertyCardProps {
-  id?: BaseKey | undefined,
+  id?: string | number | undefined,
   title: string,
   location: string,
   price: string,

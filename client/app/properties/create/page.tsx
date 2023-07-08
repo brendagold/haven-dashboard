@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FieldValues, useForm } from "react-hook-form";
 import { useSession} from "next-auth/react";
+import { toast } from 'react-toastify'
 import axios from "axios";
 import Form from "@/components/common/Form";
 
@@ -44,17 +45,17 @@ const CreateProperty = () => {
   // };
 
   const onSubmit = async (data: FieldValues, e: any) => {
-    // console.log(data)
-    // console.log(data.photo[0])
-    // const formData = new FormData();
-    //     formData.append("files", data.photo[0]);
-  //       data = { ...data, photo: data.photo[0].name };
-  // formData.append("property", JSON.stringify(data));
     e.preventDefault()
     if (!propertyImage.name) return alert("Please upload a property image");
     await axios.post(
       "http://localhost:8080/api/v1/properties",
-      { ...data,photo: propertyImage.url, email: user?.email })
+      { ...data,photo: propertyImage.url, email: user?.email }).then((response) => {
+        console.log(response)
+        toast('I am working', { hideProgressBar: true, autoClose: 2000, type: 'success' ,position:'bottom-right' })
+      }, (error) => {
+        toast.error(response.message)
+      });
+      
       router.push('/properties')
      
   } 
@@ -70,7 +71,7 @@ const CreateProperty = () => {
       } } onFinishHandler={function (data: FieldValues): Promise<void> {
         throw new Error("Function not implemented.");
       } }    />
-    //handleImageChange={handleImageChange}
+   
   );
 };
 

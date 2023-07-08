@@ -1,5 +1,7 @@
 "use client";
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { Box, ThemeProvider, CssBaseline } from "@mui/material";
 import { darkTheme } from "./theme/themes";
 import {
@@ -12,7 +14,6 @@ import {
 import { Metadata } from "next";
 import { AppHeader, SideNav } from "@/components";
 import ProvidersWrapper from "./ProvidersWrapper";
-import Login from "./login/page";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { LayoutContent } from "./layoutContent";
 // export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export default function RootLayout({
           <body id="__next">
             <ProvidersWrapper>
               <LayoutContent>{children}</LayoutContent>
-
+              <ToastContainer />
               {/* <Login /> */}
             </ProvidersWrapper>
           </body>
