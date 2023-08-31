@@ -101,6 +101,7 @@ console.log(allProperties)
             <CustomButton title="Add Property" handleClick={() => {router.push('/properties/create')}} backgroundColor='#475be8' color='#fcfcfc' icon={<Add />} />
 
           </Box>
+          <Box mb={2} mt={3} display="flex" width="84%" justifyContent="space-between" flexWrap="wrap"></Box>
         </Stack>
        </Box>
       <Stack direction='row' justifyContent='space-between' alignItems='center'>

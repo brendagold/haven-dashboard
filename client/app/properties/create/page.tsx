@@ -51,7 +51,7 @@ const CreateProperty = () => {
       "http://localhost:8080/api/v1/properties",
       { ...data,photo: propertyImage.url, email: user?.email }).then((response) => {
         console.log(response)
-        toast(response.data.message, { hideProgressBar: true, autoClose: 4000, type: 'success', position:'top-right' })
+        toast(response.data.message, { hideProgressBar: true, autoClose: 3000, type: 'success', position:'top-right' })
       }, (error) => {
         toast.error(error)
       });
