@@ -14,9 +14,22 @@ export interface FormValues {
 }
 
 export interface PropertyCardProps {
-  id?: string | number | undefined,
+  _id: string | number | undefined;
+  id: string | number | undefined,
   title: string,
   location: string,
   price: string,
   photo: string,
+}
+
+export type Property = {
+  _id: string,
+  title: string,
+  description: string,
+  propertyType: string,
+  location: string,
+  price: string,
+  photo: string,
+  creator: string,
+  __v: number
 }

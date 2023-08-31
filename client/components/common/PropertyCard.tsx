@@ -16,11 +16,11 @@ const PropertyCard = ({id, title, location, price, photo} : PropertyCardProps) =
     >
       <CardMedia
         component="img"
-        width="100%"
+        width={300}
         height={210}
         image={photo}
         alt="card_img"
-        sx={{ borderRadius: '10px' }}
+        sx={{ borderRadius: '10px', width: '300px'}}
       />
       <CardContent sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: '10px', paddingX: '5px' }}>
         <Stack direction="column" gap={1}>

@@ -39,6 +39,7 @@ export default function RootLayout({
           </body>
         </ProSidebarProvider>
       </ThemeProvider>
+      
     </html>
   );
 }
